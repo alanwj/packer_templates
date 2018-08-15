@@ -64,6 +64,11 @@
     ],
     "provisioners": [
         {
+            "type": "file",
+            "source": "files/vagrant.pub",
+            "destination": "/tmp/vagrant.pub"
+        },
+        {
             "type": "shell",
             "script": "scripts/init.sh",
             "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
@@ -72,7 +77,7 @@
             "type": "shell",
             "script": "scripts/cleanup.sh",
             "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
-        }    
+        }
     ],
     "post-processors": [{
       "type": "vagrant",
